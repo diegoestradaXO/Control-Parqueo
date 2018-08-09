@@ -7,15 +7,7 @@ import java.io.InputStream
 class Building(
         val stages: ArrayList<Stage> = ArrayList()
 ){
-    //TODO findStage()
-    fun readStage(path: String): ArrayList<String>{
-        var stageList = ArrayList<String>()
-        val bufferedReader = File(path).bufferedReader()
-        val lineList = mutableListOf<String>()
-        bufferedReader.useLines { lines -> lines.forEach { lineList.add(it) } }
-        lineList.forEach { stageList.addAll((it.split(""))) }
-        return stageList
-    }
+
     fun deleteStage(stageID: String): Boolean{
         val selectedStage = stages.filter {it.id == stageID}
         if(selectedStage.count() > 0){

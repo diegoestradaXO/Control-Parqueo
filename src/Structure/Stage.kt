@@ -14,9 +14,9 @@ class Stage(
         private val walls: ArrayList<Wall> = ArrayList()
 
 ){
-    fun readMap(location:String):ArrayList<String>{
+    fun readMap(path:String):ArrayList<String>{
         var StageArrayList= ArrayList<String>()
-        val inputStream: InputStream = File(location).inputStream()
+        val inputStream: InputStream = File(path).inputStream()
         val lineList= mutableListOf<String>()
         inputStream.bufferedReader().useLines { lines-> lines.forEach { lineList.add(it) } }
         lineList.forEach{StageArrayList.add(it)}
@@ -35,12 +35,12 @@ class Stage(
                     var newWall = Wall(column, row)
                     walls.add(newWall)
                 } else if (toEvaluate.toIntOrNull() != null) {
-                    var newParkingSpot = ParkingLot(name = toEvaluate, x = column, y = row)
-                    parkingLots.add(newParkingSpot)
+                    var newParkingLot = ParkingLot(name = toEvaluate, x = column, y = row)
+                    parkingLots.add(newParkingLot)
                     checking.add(toEvaluate)
                 } else if(toEvaluate!=" "){
-                    var anotherParkingSpot = ParkingLot(name = toEvaluate, x = column, y = row)
-                    parkingLots.add(anotherParkingSpot)
+                    var secParkingLot = ParkingLot(name = toEvaluate, x = column, y = row)
+                    parkingLots.add(secParkingLot)
                     checking.add(toEvaluate)
                 }
             }

@@ -49,6 +49,7 @@ fun main(args: Array<String>) {
 
 
                         if (option2 == 2) {
+                            println("Ingresa el identificador del nivel que deseas borrar...")
                             val id = readLine()!!.toString()
                             val deleting = myBuilding.deleteStage(id)
                             if (deleting){
@@ -80,6 +81,7 @@ fun main(args: Array<String>) {
                     val option3 = readLine()!!.toInt()
                     if (option3 > 0 && option3 < 3) {
                         if (option3 == 1){
+                            println("Ingresa tu placa: ")
                             val licensePlate = readLine().toString()
                             if (myBuilding.getLevelbyPlate(plate = licensePlate)!=null){
                                 println(myBuilding.getLevelbyPlate(licensePlate))
@@ -98,9 +100,12 @@ fun main(args: Array<String>) {
                                     val parkingLotId = readLine()!!.toString()
                                     if (stageChosed.getParkingLot(parkingLotId) != null){
                                         val mypark = stageChosed.getParkingLot(parkingLotId)
-                                        mypark.park(plate = licensePlate)
+                                        mypark!!.park(plate = licensePlate)
+                                        println("Parqueado exitosamente")
 
 
+                                    }else{
+                                        println("No se encontro el parqueo que ingresaste")
                                     }
 
                                 }else{
