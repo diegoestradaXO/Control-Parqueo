@@ -78,6 +78,33 @@ fun main(args: Array<String>) {
                     if (option3 > 0 && option3 < 3) {
                         if (option3 == 1){
                             val licensePlate = readLine().toString()
+                            if (myBuilding.getLevelbyPlate(plate = licensePlate)!=null){
+                                println(myBuilding.getLevelbyPlate(licensePlate))
+                                println(myBuilding.getLevelbyPlate(licensePlate)!!.stageToString())
+                            }else{
+                                for(stage in myBuilding.getAvailableStages()){
+                                    println("Estos son los niveles con espacios disponibles...")
+                                    println(stage)
+                                }
+                                println("Escoja el nivel en el que desea parquear su vehiculo(Ingresar el id)")
+                                val stageId = readLine()!!.toString()
+                                val stageChosed = myBuilding.checkStageID(stageId)
+                                if (stageChosed != null){
+                                    println(stageChosed.stageToString())
+                                    println("Ingrese el nombre del parqueo en el que desea estacionarse: ")
+                                    val parkingLotId = readLine()!!.toString()
+                                    if (stageChosed.getParkingLot(parkingLotId) != null){
+                                        val mypark = stageChosed.getParkingLot(parkingLotId)
+                                        mypark.park(plate = licensePlate)
+
+
+                                    }
+
+                                }else{
+                                    println("Lo siento, pero el id que ingresaste no concuerda con ningun parqueo disponible..")
+                                }
+                            }
+
 
                         }
                         if (option3 ==2 ){

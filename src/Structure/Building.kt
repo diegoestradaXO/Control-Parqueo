@@ -48,8 +48,30 @@ class Building(
         if(selectedName.count() > 0) return selectedName[0]
         else{ return null}
     }
+    fun getLevelbyPlate(plate: String):Stage?{
+        for (stage in stages){
+            if (stage.checkIfPilotIsAlreadyParked(plate)!=null){
+                return stage
+            }
+        }
+        return null
+    }
+    fun getAvailableStages():ArrayList<Stage> {
+        val availableStages = ArrayList<Stage>()
+        for (stage in stages) {
+            var isAvailable = false
+            for (parkingLot in stage.parkingLots) {
+                if (!parkingLot.isOccupied) {
+                    isAvailable = !isAvailable
 
+                }
 
+            }
+            availableStages.add(stage)
+
+        }
+        return availableStages
+    }
 
 
 
