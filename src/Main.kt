@@ -45,6 +45,9 @@ fun main(args: Array<String>) {
                                 println("Felicidades, el nivel ha sido creado satisfactoriamente")
                             }
                         }
+
+
+
                         if (option2 == 2) {
                             val id = readLine()!!.toString()
                             val deleting = myBuilding.deleteStage(id)
